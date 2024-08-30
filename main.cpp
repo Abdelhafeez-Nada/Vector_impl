@@ -18,4 +18,6 @@ int main()
     v.print();
     v.push_back(90);
     v.print();
+    v.insert(88, 2);
+    v.print();
 }

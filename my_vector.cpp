@@ -45,10 +45,21 @@ public:
 
     void push_back(int val)
     {
-
         check_capacity();
         arr[size] = val;
         size++;
+    }
+
+    void insert(int val, int idx)
+    {
+        if (is_valid_idx(idx))
+        {
+            check_capacity();
+            for (int i = size - 1; i >= idx; i--)
+                arr[i + 1] = arr[i];
+            arr[idx] = val;
+            size++;
+        }
     }
 
     void check_capacity()
