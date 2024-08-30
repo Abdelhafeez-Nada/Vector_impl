@@ -7,13 +7,15 @@ class my_vector
 private:
     int *arr = nullptr;
     int size = 0;
+    int capacity = 0;
 
 public:
     my_vector(int size) : size(size)
     {
         if (size < 0)
             size = 1;
-        arr = new int[size]{};
+        capacity = size + 5;
+        arr = new int[capacity]{};
     }
 
     ~my_vector()
@@ -29,6 +31,12 @@ public:
 
     void set(int idx, int val)
     {
+        if (idx >= size)
+        {
+            cout << "Index: " << idx << " out of bound for Size: " << size << "\n";
+            return;
+        }
+
         arr[idx] = val;
     }
 
@@ -40,13 +48,27 @@ public:
         return -1;
     }
 
-    void push_back(int el)
+    void push_back(int val)
     {
-        size += 1;
-        int *temp = new int[size];
+
+        check_capacity();
+        arr[size] = val;
+        size++;
+    }
+
+    void check_capacity()
+    {
+        if (size == capacity)
+            expand_capacity();
+    }
+
+    void expand_capacity()
+    {
+        cout << "\nexpand_capacity\n";
+        capacity *= 2;
+        int *temp = new int[capacity]{};
         for (int i = 0; i < size; i++)
             temp[i] = arr[i];
-        temp[size - 1] = el;
         delete[] arr;
         arr = temp;
     }
