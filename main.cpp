@@ -20,4 +20,8 @@ int main()
     v.print();
     v.insert(88, 2);
     v.print();
+    v.right_rotate();
+    v.print();
+    v.left_rotate();
+    v.print();
 }

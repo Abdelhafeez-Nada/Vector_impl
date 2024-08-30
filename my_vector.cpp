@@ -62,6 +62,26 @@ public:
         }
     }
 
+    void right_rotate()
+    {
+        if (size < 2)
+            return;
+        int tmp = arr[size - 1];
+        for (int i = size - 2; i >= 0; i--)
+            arr[i + 1] = arr[i];
+        arr[0] = tmp;
+    }
+
+    void left_rotate()
+    {
+        if (size < 2)
+            return;
+        int tmp = arr[0];
+        for (int i = 1; i < size; i++)
+            arr[i - 1] = arr[i];
+        arr[size - 1] = tmp;
+    }
+
     void check_capacity()
     {
         if (size == capacity)
