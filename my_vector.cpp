@@ -31,13 +31,8 @@ public:
 
     void set(int idx, int val)
     {
-        if (idx >= size)
-        {
-            cout << "Index: " << idx << " out of bound for Size: " << size << "\n";
-            return;
-        }
-
-        arr[idx] = val;
+        if (is_valid_idx(idx))
+            arr[idx] = val;
     }
 
     int find(int val)
@@ -78,5 +73,15 @@ public:
         for (int i = 0; i < size; i++)
             cout << arr[i] << " ";
         cout << "\n";
+    }
+
+    bool is_valid_idx(int idx)
+    {
+        if (idx >= size)
+        {
+            cout << "Index: " << idx << " out of bound for Size: " << size << "\n";
+            return false;
+        }
+        return true;
     }
 };
