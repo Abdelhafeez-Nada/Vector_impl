@@ -22,6 +22,6 @@ int main()
     v.print();
     // v.right_rotate_n_times_constant_memory(16);
     // v.print();
-    v.left_rotate_n_times_n_space(16);
+    v.left_rotate_n_times_constant_space(15);
     v.print();
 }

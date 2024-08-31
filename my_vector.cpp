@@ -161,6 +161,24 @@ public:
         arr = temp;
     }
 
+    void left_rotate_n_times_constant_space(int times)
+    {
+        // minimize times
+        times %= size;
+        // check edge cases
+        if (size < 2 || times == 0)
+            return;
+
+        // 1-reverse whole array
+        reverse(0, size - 1);
+
+        // 2-reverse rotated part
+        reverse(size - times, size - 1);
+
+        // reverse shifted part
+        reverse(0, size - times - 1);
+    }
+
     void reverse(int start, int end)
     {
         while (start < end)
