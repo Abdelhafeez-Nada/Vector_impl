@@ -179,6 +179,15 @@ public:
         reverse(0, size - times - 1);
     }
 
+    int pop(int idx)
+    {
+        int poped = arr[idx];
+        while (idx < size - 1)
+            arr[idx] = arr[++idx];
+        size--;
+        return poped;
+    }
+
     void reverse(int start, int end)
     {
         while (start < end)
