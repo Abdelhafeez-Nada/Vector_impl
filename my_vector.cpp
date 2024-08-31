@@ -118,6 +118,49 @@ public:
         reverse(times, size - 1);
     }
 
+    void left_rotate_n_times_quadratic_time(int times)
+    {
+        // minimize times
+        times %= size;
+        // check edge cases
+        if (size < 2 || times == 0)
+            return;
+        // outer loop for all rotation times
+        for (int t = 0; t < times; t++)
+        {
+            int rotated = arr[0];
+            for (int i = 1; i < size; i++)
+                // left shift elements
+                arr[i - 1] = arr[i];
+            arr[size - 1] = rotated;
+        }
+    }
+
+    void left_rotate_n_times_n_space(int times)
+    {
+        // minimize times
+        times %= size;
+        // check edge cases
+        if (size < 2 || times == 0)
+            return;
+
+        // create temporary array that woll hold elements in new posistions
+        int *temp = new int[capacity]{};
+        int temp_itr = 0;
+
+        // 1-insert shifted elemnts in temp array
+        for (int i = times; i < size; i++)
+            temp[temp_itr++] = arr[i];
+
+        // 2-insert rotated elemnts in temp array
+        for (int i = 0; i < times; i++)
+            temp[temp_itr++] = arr[i];
+
+        // 3-swap arrays
+        delete[] arr;
+        arr = temp;
+    }
+
     void reverse(int start, int end)
     {
         while (start < end)
@@ -158,7 +201,6 @@ public:
             cout << arr[i] << " ";
         cout << "\n";
     }
-
     bool is_valid_idx(int idx)
     {
         if (idx >= size)
