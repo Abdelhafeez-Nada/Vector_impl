@@ -103,6 +103,13 @@ public:
         arr = tmp;
     }
 
+    void swap(int start, int end)
+    {
+        int temp = arr[start];
+        arr[start] = arr[end];
+        arr[end] = temp;
+    }
+
     void check_capacity()
     {
         if (size == capacity)
