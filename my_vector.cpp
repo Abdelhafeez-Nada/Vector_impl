@@ -88,9 +88,9 @@ public:
 
     void right_rotate_n_times_n_memory(int times)
     {
-        if (size < 2 || times == size)
-            return;
         times %= size;
+        if (size < 2 || times == 0)
+            return;
         int idx = size - times;
         int *tmp = new int[capacity];
         int j = 0;
@@ -101,6 +101,31 @@ public:
             tmp[j++] = arr[i];
         delete[] arr;
         arr = tmp;
+    }
+
+    void right_rotate_n_times_constant_memory(int times)
+    {
+        times %= size;
+        if (size < 2 || times == 0)
+            return;
+        // 1-reverse the whole array
+        reverse(0, size - 1);
+
+        // 2-reverse rotation part
+        reverse(0, times - 1);
+
+        // 3-reverse shifted part
+        reverse(times, size - 1);
+    }
+
+    void reverse(int start, int end)
+    {
+        while (start < end)
+        {
+            swap(start, end);
+            start++;
+            end--;
+        }
     }
 
     void swap(int start, int end)
