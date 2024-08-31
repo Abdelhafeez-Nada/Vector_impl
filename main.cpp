@@ -20,9 +20,11 @@ int main()
     v.print();
     v.insert(88, 2);
     v.print();
-    int poped = v.pop(5);
-    cout << "POPED: " << poped << "\n";
+    int index = v.find_transaposition(88);
+    cout << "Index: " << index << "\n";
     v.print();
+    // int poped = v.pop(5);
+    // cout << "POPED: " << poped << "\n";
     // v.right_rotate_n_times_constant_memory(16);
     // v.print();
     // v.left_rotate_n_times_constant_space(15);

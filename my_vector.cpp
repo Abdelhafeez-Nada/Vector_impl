@@ -188,6 +188,21 @@ public:
         return poped;
     }
 
+    int find_transaposition(int val)
+    {
+        if (arr[0] == val)
+            return 0;
+        for (int i = 1; i < size - 1; i++)
+        {
+            if (arr[i] == val)
+            {
+                swap(i - 1, i);
+                return i - 1;
+            }
+        }
+        return -1;
+    }
+
     void reverse(int start, int end)
     {
         while (start < end)
