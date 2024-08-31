@@ -62,14 +62,18 @@ public:
         }
     }
 
-    void right_rotate()
+    void right_rotate(int times)
     {
         if (size < 2)
             return;
-        int tmp = arr[size - 1];
-        for (int i = size - 2; i >= 0; i--)
-            arr[i + 1] = arr[i];
-        arr[0] = tmp;
+        times %= size;
+        for (int time = 0; time < times; time++)
+        {
+            int tmp = arr[size - 1];
+            for (int i = size - 2; i >= 0; i--)
+                arr[i + 1] = arr[i];
+            arr[0] = tmp;
+        }
     }
 
     void left_rotate()
@@ -80,6 +84,23 @@ public:
         for (int i = 1; i < size; i++)
             arr[i - 1] = arr[i];
         arr[size - 1] = tmp;
+    }
+
+    void right_rotate_n_times_n_memory(int times)
+    {
+        if (size < 2 || times == size)
+            return;
+        times %= size;
+        int idx = size - times;
+        int *tmp = new int[capacity];
+        int j = 0;
+        for (int i = idx; i < size; i++)
+            tmp[j++] = arr[i];
+
+        for (int i = 0; i < idx; i++)
+            tmp[j++] = arr[i];
+        delete[] arr;
+        arr = tmp;
     }
 
     void check_capacity()
